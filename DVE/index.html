@@ -1,0 +1,245 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>&lt;model-viewer&gt; template</title>
+    <meta charset="utf-8">
+    <meta name="description" content="&lt;model-viewer&gt; template">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link type="text/css" href="./styles.css" rel="stylesheet"/>
+
+    <style>
+    html, body {
+        background-color: #f0eade;
+ }
+    body {
+  background-color: #f4f1ec; /* soft ivory tone */
+  margin: 0;
+  font-family: 'Georgia', serif;
+  color: #2e2e2e; /* dark gray for text */
+
+}
+.top-banner {
+  width: 100%;
+  background-color: #0b3e28;
+  color: #fff;
+  text-align: center;
+  padding: 20px 0;
+  font-family: 'Georgia', serif;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  position: fixed;
+  top: 0;
+  z-index: 2000;
+}
+
+.top-banner h1 {
+  margin: 0;
+  font-size: 36px;
+  letter-spacing: 1px;
+}
+
+  model-viewer {
+    width: 100vw;
+    height: 100vh;
+    background-color: #fffdf9;
+  }
+      /* Button container at bottom center */
+      .button-container {
+  position: fixed;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: 'Georgia', serif;
+  font-size: 13px;
+  background: rgba(255, 255, 255, 0.9);
+  padding: 10px 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+}
+
+.button-row {
+  display: flex;
+  align-items: center;
+  margin: 4px 0;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.button-label {
+  margin-right: 8px;
+  font-weight: bold;
+  color: #333;
+  white-space: nowrap;
+}
+
+.button-container button {
+  margin: 0 4px;
+  padding: 4px 10px;
+  font-size: 12px;
+  border: 1.5px solid #0e3b2f;
+  background: transparent;
+  color: #0e3b2f;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.button-container button:hover {
+  background-color: #0e3b2f;
+  color: white;
+}
+    </style>
+  </head>
+  <body>
+  <div class="top-banner">
+  <h1>ModuFit Craft Kit</h1>
+</div>
+    <!-- <model-viewer> HTML element -->
+    <model-viewer src="DVE.glb" id='SP2' ar ar-modes="webxr scene-viewer quick-look" camera-controls tone-mapping="neutral" poster="poster.png" shadow-intensity="1.12" camera-orbit="-160deg 54.24deg 25.03m" field-of-view="22.98deg" exposure="1.24" environment-image="legacy">
+      <button class="Hotspot" slot="hotspot-1" data-surface="10 0 16948 16947 16838 0.108 0.381 0.511" data-visibility-attribute="visible" onMouseOver="showLabel1()" onMouseOut="hideLabel1()">
+          <div class="HotspotAnnotation" style="visibility:hidden" id=label1>Jig + Storage</div>
+
+      <button class="Hotspot" slot="hotspot-2" data-surface="3 0 897 840 854 0.332 0.193 0.475" data-visibility-attribute="visible" onMouseOver="showLabel2()" onMouseOut="hideLabel2()">
+        <div class="HotspotAnnotation" style="visibility:hidden" id=label2>Joineries</div>
+
+      </button><button class="Hotspot" slot="hotspot-3" data-surface="5 0 1027 993 1026 0.300 0.130 0.570" data-visibility-attribute="visible" onMouseOver="showLabel3()" onMouseOut="hideLabel3()">
+          <div class="HotspotAnnotation" style="visibility:hidden" id=label3>Cap</div>
+
+      </button><button class="Hotspot" slot="hotspot-4" data-surface="6 0 3777 3762 3753 0.194 0.671 0.134" data-visibility-attribute="visible" onMouseOver="showLabel4()" onMouseOut="hideLabel4()">
+          <div class="HotspotAnnotation" style="visibility:hidden" id=label4>Screw</div>
+
+      <button class="Hotspot" slot="hotspot-5" data-surface="15 0 5747 5730 5731 0.372 0.002 0.625" data-visibility-attribute="visible" onMouseOver="showLabel5()" onMouseOut="hideLabel5()">
+        <div class="HotspotAnnotation" style="visibility:hidden" id=label5>Multitool</div>
+
+      </button><button class="Hotspot" slot="hotspot-6" data-surface="8 0 7533 7491 7492 0.314 0.229 0.457" data-visibility-attribute="visible" onMouseOver="showLabel6()" onMouseOut="hideLabel6()">
+          <div class="HotspotAnnotation" style="visibility:hidden" id=label6>Structure Sticks</div>
+
+      </button>
+
+      <div class="button-container">
+
+  <div class="button-row">
+    <span class="button-label">View Angles:</span>
+    <button onClick="setOrbit('-180deg 0.5722deg 29.5m')">Top</button>
+    <button onClick="setOrbit('-113.3deg 76.08deg 15.66m')">Left</button>
+    <button onClick="setOrbit('-230.9deg 81.8deg 15.66m')">Right</button>
+  </div>
+
+  <div class="button-row">
+    <span class="button-label">Variants:</span>
+    <button onClick="v1()">Original</button>
+    <button onClick="v2()">Variation 1</button>
+    <button onClick="v3()">Variation 2</button>
+  </div>
+
+  <div class="button-row">
+    <span class="button-label">Animations:</span>
+    <button onClick="capexplode()">Jig</button>
+    <button onClick="caprotate()">Clamp Tool</button>
+    <button onClick="handlerotate()">Drill Tool</button>
+    <button onClick="pauseit()">Pause</button>
+  </div>
+
+</div>
+
+</div>
+
+      <div class="progress-bar hide" slot="progress-bar">
+          <div class="update-bar"></div>
+      </div>
+      <button slot="ar-button" id="ar-button">
+          View in your space
+      </button>
+      <div id="ar-prompt">
+          <img src="ar_hand_prompt.png">
+      </div>
+    </model-viewer>  
+
+     <script>
+    function setOrbit(orbit) {
+      document.getElementById("SP2").cameraOrbit=orbit;
+     }
+     </script>
+
+    <script>
+function showLabel1() {
+document.getElementById("label1").style.visibility="visible"
+}
+function hideLabel1() {
+document.getElementById("label1").style.visibility="hidden"
+}
+
+function showLabel2() {
+document.getElementById("label2").style.visibility="visible"
+}
+function hideLabel2() {
+document.getElementById("label2").style.visibility="hidden"
+}
+ 
+function showLabel3() {
+document.getElementById("label3").style.visibility="visible"
+}
+function hideLabel3() {
+document.getElementById("label3").style.visibility="hidden"
+}
+
+function showLabel4() {
+document.getElementById("label4").style.visibility="visible"
+}
+function hideLabel4() {
+document.getElementById("label4").style.visibility="hidden"
+}
+
+function showLabel5() {
+document.getElementById("label5").style.visibility="visible"
+}
+function hideLabel5() {
+document.getElementById("label5").style.visibility="hidden"
+}
+
+function showLabel6() {
+document.getElementById("label6").style.visibility="visible"
+}
+function hideLabel6() {
+document.getElementById("label6").style.visibility="hidden"
+}
+</script>
+
+<script>
+    function v1(){
+        document.getElementById("SP2").variantName="V1"
+    }
+    function v2(){
+        document.getElementById("SP2").variantName="V2"
+    }
+    function v3(){
+        document.getElementById("SP2").variantName="V3"
+    }
+    </script>
+
+    <script>
+    function capexplode(){
+        document.getElementById('SP2').animationName="Base";
+        document.getElementById('SP2').play();
+    }
+    function caprotate(){
+        document.getElementById('SP2').animationName="toolclamp";
+        document.getElementById('SP2').play();
+    }
+    function handlerotate(){
+        document.getElementById('SP2').animationName="tooldrill";
+        document.getElementById('SP2').play();
+    }
+        function pauseit(){
+        document.getElementById('SP2').pause()
+    }
+    </script>
+
+    <script src="script.js"></script>
+    <!-- Loads <model-viewer> for browsers: -->
+    <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/4.0.0/model-viewer.min.js"></script>
+  </body>
+</html>
